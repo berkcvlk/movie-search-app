@@ -16,13 +16,13 @@ const Home = () => {
   return (
     <div className='home-container'>
       <Input handleSearch={handleSearch} />
-      {/* conditional rendering */}
       {movies?.length > 0 ? (
         <div className='movies'>
+          {console.log(movies)}
           {movies?.map((movie) => {
             return (
               <Link
-                to={'movies/tt1201607'} /* Router.js dinamik path yapısıyla aynı olacak şekilde imdbID ile routing işlemini yapınız */
+                to={`/movies/${movie.imdbID}`}
                 className='text-link'
                 key={movie.imdbID}
               >

@@ -1,50 +1,52 @@
-import React, { useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
-import { MovieContext } from '../context/MovieContext';
+import { MovieContext } from "../context/MovieContext";
 
-import noImage from '../utils/no-image-available.png';
-import '../styles/Detail.css';
+import noImage from "../utils/no-image-available.png";
+import "../styles/Detail.css";
 
 const Detail = () => {
-  // React Router'daki dinamik URL kısmını almalıyız (useParams)
   const { showDetail, selectedMovie } = useContext(MovieContext);
+  const { id } = useParams();
+
   useEffect(() => {
-    showDetail('tt1201607'); // useParams ile alınan film id'sini kullanınız. 
+    showDetail(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className='detail-container'>
-      <div className='poster'>
-        {selectedMovie.Poster === 'N/A' ? (
+    <div className="detail-container">
+      <div className="poster">
+        {selectedMovie.Poster === "N/A" ? (
           <img src={noImage} alt={selectedMovie.Title} />
         ) : (
           <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
         )}
       </div>
-      <div className='info'>
-        <div className='field'>
-          <div className='label'>Title</div>
+      <div className="info">
+        <div className="field">
+          <div className="label">Title</div>
           <div>{selectedMovie.Title}</div>
         </div>
-        <div className='field'>
-          <div className='label'>Released</div>
+        <div className="field">
+          <div className="label">Released</div>
           <div>{selectedMovie.Released}</div>
         </div>
-        <div className='field'>
-          <div className='label'>Runtime</div>
+        <div className="field">
+          <div className="label">Runtime</div>
           <div>{selectedMovie.Runtime}</div>
         </div>
-        <div className='field'>
-          <div className='label'>Genre</div>
+        <div className="field">
+          <div className="label">Genre</div>
           <div>{selectedMovie.Genre}</div>
         </div>
-        <div className='field'>
-          <div className='label'>IMDB Rating</div>
+        <div className="field">
+          <div className="label">IMDB Rating</div>
           <div>{selectedMovie.imdbRating}</div>
         </div>
-        <div className='field'>
-          <div className='label'>Director</div>
+        <div className="field">
+          <div className="label">Director</div>
           <div>{selectedMovie.Director}</div>
         </div>
       </div>

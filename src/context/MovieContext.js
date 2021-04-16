@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 export const MovieContext = createContext();
 
-const API_KEY = ''; // OMDb API Key
+const API_KEY = '242bf8f'; // OMDb API Key
 
 const MovieApp = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
